@@ -20,6 +20,12 @@ set hlsearch
 """"""""""""""""""""""""""""""""""""""""""
 inoremap jk <esc>
 
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 """"""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Taken from Gary Bernhardt
