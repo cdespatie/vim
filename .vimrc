@@ -15,6 +15,8 @@ set ignorecase smartcase
 set incsearch
 set hlsearch
 
+set clipboard=unnamed
+
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
 """"""""""""""""""""""""""""""""""""""""""
