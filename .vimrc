@@ -18,7 +18,12 @@ set hlsearch
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
 """"""""""""""""""""""""""""""""""""""""""
+let mapleader = "\<Space>"
+
 inoremap jk <esc>
+
+nnoremap <leader>s <C-w>v 
+nnoremap <leader>h <C-w>h 
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
