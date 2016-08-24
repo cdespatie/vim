@@ -15,7 +15,9 @@ set number
 
 set ignorecase smartcase
 set incsearch
-set hlsearch
+
+set ttyfast
+set lazyredraw
 
 set clipboard=unnamed
 
@@ -27,17 +29,17 @@ let mapleader = "\<Space>"
 inoremap jk <esc>
 
 " Create splits with leader
-nnoremap <leader>s <C-w>v 
-nnoremap <leader>h <C-w>h 
+nnoremap <leader>s <C-W>v 
+nnoremap <leader>h <C-W>s 
 
 " Rotate between splits
-nnoremap <leader>w <C-w>w
+nnoremap <leader>w <c-W>w
 
 " Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-W>j
+nnoremap <c-k> <c-W>k
+nnoremap <c-h> <c-W>h
+nnoremap <c-l> <c-W>l
 
 """"""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
