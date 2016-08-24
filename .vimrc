@@ -31,7 +31,7 @@ nnoremap <leader>s <C-w>v
 nnoremap <leader>h <C-w>h 
 
 " Rotate between splits
-nnoremap <leader>t <C-w>w
+nnoremap <leader>w <C-w>w
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
