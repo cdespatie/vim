@@ -28,6 +28,8 @@ let mapleader = "\<Space>"
 
 inoremap jk <esc>
 
+nnoremap <leader><leader> .
+
 " Create splits with leader
 nnoremap <leader>s <C-W>v 
 nnoremap <leader>h <C-W>s 
