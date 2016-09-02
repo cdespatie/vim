@@ -44,6 +44,12 @@ nnoremap <c-h> <c-W>h
 nnoremap <c-l> <c-W>l
 
 """"""""""""""""""""""""""""""""""""""""""
+" AUTOCMDS
+""""""""""""""""""""""""""""""""""""""""""
+" Set indentation correctly for ruby files
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+
+""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Taken from Gary Bernhardt
 """"""""""""""""""""""""""""""""""""""""""
