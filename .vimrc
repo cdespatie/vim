@@ -10,6 +10,7 @@ set tabstop     =4
 set softtabstop =4
 set shiftwidth  =4
 set expandtab
+set breakindent
 
 set number
 
@@ -20,6 +21,14 @@ set ttyfast
 set lazyredraw
 
 set clipboard=unnamed
+
+""""""""""""""""""""""""""""""""""""""""""
+" OS-SPECIFIC SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+" Enable DirectX font rendering on Windows
+if has("directx") && $VIM_USE_DIRECTX != '0'
+  set renderoptions=type:directx,geom:1,taamode:1
+endif
 
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
@@ -52,6 +61,7 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 """"""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Taken from Gary Bernhardt
+" NOTE: Doesn't work in VsVim
 """"""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
     let col = col('.') - 1
