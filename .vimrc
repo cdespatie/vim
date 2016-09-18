@@ -23,6 +23,13 @@ set lazyredraw
 set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""
+" COLOUR THEME SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=235
+nnoremap <Leader>c :set cursorline! <CR>
+
+""""""""""""""""""""""""""""""""""""""""""
 " OS-SPECIFIC SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
 " Enable DirectX font rendering on Windows
