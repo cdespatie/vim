@@ -23,8 +23,13 @@ set lazyredraw
 set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""
-" COLOUR THEME SETTINGS
+" THEME SETTINGS
+" NOTE: cmder doesn't do 256 colors
 """"""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""
 " OS-SPECIFIC SETTINGS
