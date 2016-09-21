@@ -28,15 +28,16 @@ set clipboard=unnamed
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 " NOTE: cmder doesn't do 256 colors (!!)
+"       So we're not using colorscheme
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme apprentice
+if has("unix")
+    colorscheme apprentice
+endif
 
-" For airline
+" Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
-"Fix weird alignment issues in airline for arrows
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -49,7 +50,7 @@ if has("directx") && $VIM_USE_DIRECTX != '0'
 endif
 
 " Change cursor shape by mode in iTerm2
-" This is done by default in cmder (windows)
+" This is done by default in cmder
 if $TERM_PROGRAM =~ "iTerm.app"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
@@ -65,8 +66,8 @@ inoremap jk <esc>
 nnoremap <leader><leader> .
 
 " Create splits with leader
-nnoremap <leader>s <C-W>v 
-nnoremap <leader>h <C-W>s 
+nnoremap <leader>s <C-W>v
+nnoremap <leader>h <C-W>s
 
 " Rotate between splits
 nnoremap <leader>w <c-W>w
