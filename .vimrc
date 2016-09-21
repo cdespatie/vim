@@ -20,16 +20,25 @@ set incsearch
 set ttyfast
 set lazyredraw
 
+" Don't need this since we're using airline
+set noshowmode
+
 set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
-" NOTE: cmder doesn't do 256 colors
+" NOTE: cmder doesn't do 256 colors (!!)
 """"""""""""""""""""""""""""""""""""""""""
-set laststatus=2
+colorscheme apprentice
 
+" For airline
+set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+"Fix weird alignment issues in airline for arrows
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 """"""""""""""""""""""""""""""""""""""""""
 " OS-SPECIFIC SETTINGS
