@@ -1,6 +1,9 @@
 # vim
 Repo for my .vimrc
 
+## Color themes:
+- Apprentice (https://github.com/romainl/Apprentice.git)
+
 ## Plugins:
 
 ### General Use

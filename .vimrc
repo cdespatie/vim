@@ -34,6 +34,10 @@ if has("unix")
     colorscheme apprentice
 endif
 
+if has("gui_running")
+    colorscheme apprentice
+endif
+
 " Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
