@@ -27,15 +27,21 @@ set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
-" NOTE: cmder doesn't do 256 colors (!!)
-"       So we're not using colorscheme
 """"""""""""""""""""""""""""""""""""""""""
 if has("unix")
     colorscheme apprentice
 endif
 
+" gVim specific settings
 if has("gui_running")
+    set guioptions-=T " Remove toolbar in gVim
     colorscheme apprentice
+
+    " Windows has different font syntax
+    if has("win32") || has("win64")
+        set guifont=Fira_Mono_for_Powerline:h10:cANSI
+    endif
+
 endif
 
 " Airline
@@ -91,7 +97,6 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 """"""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Taken from Gary Bernhardt
-" NOTE: Doesn't work in VsVim
 """"""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
     let col = col('.') - 1
