@@ -35,11 +35,14 @@ endif
 " gVim specific settings
 if has("gui_running")
     set guioptions-=T " Remove toolbar in gVim
+    set guioptions-=L " Remove left scrollbar in gVim ('r' is right)
     colorscheme apprentice
 
     " Windows has different font syntax
     if has("win32") || has("win64")
-        set guifont=Fira_Mono_for_Powerline:h10:cANSI
+        set guifont=Fira_Mono_for_Powerline:h8:cANSI
+        set rop=type:directx,geom:1,taamode:1
+        set enc=utf-8
     endif
 
 endif
