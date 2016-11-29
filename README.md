@@ -10,6 +10,7 @@ Repo for my .vimrc
 - Sensible.vim by tpope (https://github.com/tpope/vim-sensible)
 - File Beagle by Jeet Sukumaran (https://github.com/jeetsukumaran/vim-filebeagle)
 - Airline by vim-airline (https://github.com/vim-airline/vim-airline.git)
+- vim-commentary by tpope (https://github.com/tpope/vim-commentary)
 
 ### Ruby/Rails
 - Vim-Ruby plugin for managing whitespace, etc (https://github.com/vim-ruby/vim-ruby.git)
