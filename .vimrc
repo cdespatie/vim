@@ -93,6 +93,9 @@ nnoremap <c-k> <c-W>k
 nnoremap <c-h> <c-W>h
 nnoremap <c-l> <c-W>l
 
+" Taps text mapping
+nnoremap <leader>d :%s/=:.*/=:/
+
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""
