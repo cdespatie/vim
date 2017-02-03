@@ -1,4 +1,21 @@
-execute pathogen#infect()
+""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS
+" Install plugins with ':PlugInstall'
+""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+" General-use plugins
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'vim-airline/vim-airline'
+
+" Language-specific plugins
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""
 " BASIC EDITOR SETTINGS
