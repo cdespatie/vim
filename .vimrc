@@ -15,6 +15,10 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
+" Colorschemes
+Plug 'romainl/Apprentice'
+Plug 'joshdick/onedark.vim'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""
@@ -45,15 +49,12 @@ set clipboard=unnamed
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-if has("unix")
-    colorscheme apprentice
-endif
+colorscheme onedark
 
 " gVim specific settings
 if has("gui_running")
     set guioptions-=T " Remove toolbar in gVim
     set guioptions-=L " Remove left scrollbar in gVim ('r' is right)
-    colorscheme apprentice
 
     " Windows has different font syntax
     if has("win32") || has("win64")
@@ -61,7 +62,6 @@ if has("gui_running")
         set rop=type:directx,geom:1,taamode:1
         set enc=utf-8
     endif
-
 endif
 
 " Airline
