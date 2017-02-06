@@ -6,9 +6,12 @@ call plug#begin('~/.vim/plugged')
 
 " General-use plugins
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Coding plugins
+Plug 'tpope/vim-commentary'
 
 " Language-specific plugins
 Plug 'vim-ruby/vim-ruby'
