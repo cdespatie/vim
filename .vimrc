@@ -54,6 +54,9 @@ set noshowmode
 
 set clipboard=unnamed
 
+" Disable folding in pandoc-vim
+let g:pandoc#modules#disabled = ["folding"]
+
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
