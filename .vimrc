@@ -14,6 +14,10 @@ Plug 'roman/golden-ratio'
 " Coding plugins
 Plug 'tpope/vim-commentary'
 
+" Writing plugins
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
 " Language-specific plugins
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
