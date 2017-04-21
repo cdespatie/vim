@@ -9,7 +9,6 @@ Plug 'tpope/vim-sensible'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'roman/golden-ratio'
 
 " Coding plugins
 Plug 'tpope/vim-commentary'
