@@ -53,8 +53,20 @@ set noshowmode
 
 set clipboard=unnamed
 
-" Disable folding in pandoc-vim
+""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+" Pandoc
 let g:pandoc#modules#disabled = ["folding"]
+
+" Airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_detect_whitespace = 0
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
@@ -73,15 +85,6 @@ if has("gui_running")
         set enc=utf-8
     endif
 endif
-
-" Airline
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_detect_whitespace = 0
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 """"""""""""""""""""""""""""""""""""""""""
 " OS-SPECIFIC SETTINGS
