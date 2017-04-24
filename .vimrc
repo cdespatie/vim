@@ -18,6 +18,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Language-specific plugins
+Plug 'OrangeT/vim-csharp'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
