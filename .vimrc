@@ -10,8 +10,8 @@ Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Coding plugins
-Plug 'tpope/vim-commentary'
+" Programming plugins
+Plug 'tpope/vim-fugitive'
 
 " Writing plugins
 Plug 'vim-pandoc/vim-pandoc'
