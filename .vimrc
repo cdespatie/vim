@@ -10,7 +10,8 @@ Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Coding plugins
+" Programming plugins
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 
 " Writing plugins
@@ -18,6 +19,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Language-specific plugins
+Plug 'OrangeT/vim-csharp'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -123,6 +125,12 @@ nnoremap <c-j> <c-W>j
 nnoremap <c-k> <c-W>k
 nnoremap <c-h> <c-W>h
 nnoremap <c-l> <c-W>l
+
+" Move lines of code around with ctrl-arrows
+nnoremap <silent> <c-Up>   :<C-u>move-2<CR>==
+nnoremap <silent> <c-Down> :<C-u>move+<CR>==
+xnoremap <silent> <c-Up>   :move-2<CR>gv=gv
+xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
 
 " Taps text mapping
 nnoremap <leader>d :%s/=:.*/=:/
