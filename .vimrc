@@ -21,6 +21,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'rust-lang/rust.vim'
 
 " Colorschemes
 Plug 'romainl/Apprentice'
