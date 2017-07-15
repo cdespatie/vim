@@ -29,6 +29,7 @@ Plug 'fatih/vim-go'
 " Colorschemes
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
+Plug 'ajmwagar/vim-dues'
 
 call plug#end()
 
@@ -75,7 +76,7 @@ let g:airline_right_sep=''
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme onedark
+colorscheme dues
 
 " gVim specific settings
 if has("gui_running")
@@ -132,9 +133,6 @@ nnoremap <silent> <c-Up>   :<C-u>move-2<CR>==
 nnoremap <silent> <c-Down> :<C-u>move+<CR>==
 xnoremap <silent> <c-Up>   :move-2<CR>gv=gv
 xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
-
-" Taps text mapping
-nnoremap <leader>d :%s/=:.*/=:/
 
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
