@@ -24,6 +24,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
 
 " Colorschemes
 Plug 'romainl/Apprentice'
