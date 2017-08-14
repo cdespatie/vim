@@ -11,7 +11,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Programming plugins
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 
 " Writing plugins
@@ -24,7 +23,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
 
 " Colorschemes
 Plug 'romainl/Apprentice'
