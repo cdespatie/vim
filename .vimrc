@@ -23,6 +23,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 " Colorschemes
 Plug 'romainl/Apprentice'
