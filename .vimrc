@@ -75,7 +75,7 @@ let g:airline_right_sep=''
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme dues
+colorscheme deus
 
 " gVim specific settings
 if has("gui_running")
