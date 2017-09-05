@@ -28,7 +28,7 @@ Plug 'cespare/vim-toml'
 " Colorschemes
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
-Plug 'ajmwagar/vim-dues'
+Plug 'ajmwagar/vim-deus'
 
 call plug#end()
 
