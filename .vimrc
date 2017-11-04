@@ -12,24 +12,23 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
-Plug 'ludovicchabant/vim-gutentags'
 
 " Writing plugins
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Language-specific plugins
-Plug 'OrangeT/vim-csharp'
-Plug 'vim-ruby/vim-ruby'
-Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
+Plug 'vim-ruby/vim-ruby'
+Plug 'OrangeT/vim-csharp'
+Plug 'rust-lang/rust.vim'
+Plug 'pangloss/vim-javascript'
 
 " Colorschemes
+Plug 'ajmwagar/vim-deus'
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
-Plug 'ajmwagar/vim-deus'
 
 call plug#end()
 
