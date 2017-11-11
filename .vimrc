@@ -146,7 +146,18 @@ xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
 " AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""
 " Set indentation correctly for ruby files
-autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+augroup rubygroup
+    autocmd!
+    autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
+
+augroup bufferswitch
+    autocmd!
+    if v:version >= 700
+      au BufLeave * let b:winview = winsaveview()
+      au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+    endif
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
