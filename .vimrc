@@ -12,6 +12,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
 
 " Writing plugins
 Plug 'vim-pandoc/vim-pandoc'
@@ -72,14 +73,9 @@ let g:airline_detect_whitespace = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-" Gutentags
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_cache_dir = '~/.vim/tagfiles'
-let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
-                                \ '*.phar', '*.ini', '*.rst', '*.md',
-                                \ '*vendor/*/test*', '*vendor/*/Test*',
-                                \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
-                                \ '*var/cache*', '*var/log*']
+" Easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
