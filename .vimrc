@@ -103,12 +103,9 @@ if has("directx") && $VIM_USE_DIRECTX != '0'
   set renderoptions=type:directx,geom:1,taamode:1
 endif
 
-" Change cursor shape by mode in iTerm2
-" This is done by default in cmder
-if $TERM_PROGRAM =~ "iTerm.app"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
+" Fix input mode cursor in terminal.
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
@@ -153,6 +150,11 @@ augroup bufferswitch
       au BufLeave * let b:winview = winsaveview()
       au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
     endif
+augroup END
+
+augroup fixcursor
+    au!
+    autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
 
 augroup disablebells
