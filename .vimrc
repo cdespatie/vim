@@ -155,6 +155,11 @@ augroup bufferswitch
     endif
 augroup END
 
+augroup disablebells
+    set noerrorbells visualbell t_vb=
+    autocmd GUIEnter * set visualbell t_vb=
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Taken from Gary Bernhardt
