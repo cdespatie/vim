@@ -15,6 +15,7 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 
 " Writing plugins
+Plug 'reedes/vim-pencil'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
@@ -76,6 +77,9 @@ let g:airline_right_sep = ''
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" vim-pencil
+let g:pencil#wrapModeDefault = 'soft'
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
@@ -155,6 +159,11 @@ augroup END
 augroup fixcursor
     au!
     autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
+
+augroup pencil
+  autocmd!
+  autocmd FileType text         call pencil#init()
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""
