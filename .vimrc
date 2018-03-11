@@ -31,6 +31,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'ajmwagar/vim-deus'
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
+Plug 'fenetikm/falcon'
 
 call plug#end()
 
@@ -84,7 +85,7 @@ let g:pencil#wrapModeDefault = 'soft'
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme apprentice
+colorscheme falcon
 
 " gVim specific settings
 if has("gui_running")
