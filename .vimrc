@@ -13,6 +13,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Programming plugins
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -46,6 +48,7 @@ set softtabstop =4
 set shiftwidth  =4
 set expandtab
 set breakindent
+set cursorline
 
 set number
 
@@ -81,6 +84,10 @@ nmap ga <Plug>(EasyAlign)
 
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_width = 50
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
