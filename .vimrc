@@ -180,10 +180,13 @@ augroup bufferswitch
     endif
 augroup END
 
-augroup fixcursor
-    au!
-    autocmd VimEnter * silent !echo -ne "\e[2 q"
-augroup END
+" NOTE: This is embedding random chars into the command bar on WSL.
+"       Disabling until I remember why I put this in to begin with.
+"       Might be an OSX/iTerm2 fix?
+" augroup fixcursor
+"     au!
+"     autocmd VimEnter * silent !echo -ne "\e[2 q"
+" augroup END
 
 augroup pencil
   autocmd!
