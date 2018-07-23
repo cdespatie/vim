@@ -13,8 +13,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Programming plugins
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'majutsushi/tagbar'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -28,13 +26,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'OrangeT/vim-csharp'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
-
-" RLS
-Plug 'w0rp/ale'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Colorschemes
 Plug 'ajmwagar/vim-deus'
