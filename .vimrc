@@ -26,12 +26,14 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'OrangeT/vim-csharp'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'hail2u/vim-css3-syntax'
 
 " Colorschemes
 Plug 'ajmwagar/vim-deus'
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
 Plug 'fenetikm/falcon'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -99,7 +101,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme falcon
+colorscheme nord
 
 " gVim specific settings
 if has("gui_running")
