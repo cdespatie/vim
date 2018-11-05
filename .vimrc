@@ -32,7 +32,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'ajmwagar/vim-deus'
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
-Plug 'fenetikm/falcon'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -96,12 +95,12 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
     let g:ale_linters = {'rust': ['rls']}
-endif 
+endif
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme nord
+colorscheme Apprentice
 
 " gVim specific settings
 if has("gui_running")
