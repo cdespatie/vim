@@ -83,10 +83,6 @@ nmap ga <Plug>(EasyAlign)
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
 
-" tagbar
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_width = 50
-
 " RLS
 if executable('rls')
     au User lsp_setup call lsp#register_server({
@@ -123,9 +119,13 @@ if has("directx") && $VIM_USE_DIRECTX != '0'
   set renderoptions=type:directx,geom:1,taamode:1
 endif
 
-" Fix input mode cursor in terminal.
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
@@ -171,14 +171,6 @@ augroup bufferswitch
       au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
     endif
 augroup END
-
-" NOTE: This is embedding random chars into the command bar on WSL.
-"       Disabling until I remember why I put this in to begin with.
-"       Might be an OSX/iTerm2 fix?
-" augroup fixcursor
-"     au!
-"     autocmd VimEnter * silent !echo -ne "\e[2 q"
-" augroup END
 
 augroup pencil
   autocmd!
