@@ -29,10 +29,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 
 " Colorschemes
-Plug 'ajmwagar/vim-deus'
 Plug 'romainl/Apprentice'
-Plug 'joshdick/onedark.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -97,7 +95,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme Apprentice
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
+
+" termguicolors working under tmux requires this
+let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+set termguicolors
 
 " gVim specific settings
 if has("gui_running")
