@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
@@ -91,6 +92,17 @@ if executable('rls')
         \ })
     let g:ale_linters = {'rust': ['rls']}
 endif
+
+" FZF
+nnoremap <c-p> :FZF<cr>
+augroup fzf
+  autocmd!
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
