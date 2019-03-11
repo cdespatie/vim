@@ -108,11 +108,12 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
 let g:gruvbox_invert_selection = 0
+set background=dark
 colorscheme gruvbox
 
 " termguicolors working under tmux requires this
-let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+let &t_8f = "[38;2;%lu;%lu;%lum"
+let &t_8b = "[48;2;%lu;%lu;%lum"
 set termguicolors
 
 " gVim specific settings
@@ -136,13 +137,9 @@ if has("directx") && $VIM_USE_DIRECTX != '0'
   set renderoptions=type:directx,geom:1,taamode:1
 endif
 
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
+set t_SI=[6\ q
+set t_SR=[4\ q
+set t_EI=[2\ q
 
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
