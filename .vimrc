@@ -19,6 +19,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'reedes/vim-pencil'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'junegunn/goyo.vim'
 
 " Language-specific plugins
 Plug 'mxw/vim-jsx'
