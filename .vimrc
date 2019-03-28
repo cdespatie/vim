@@ -8,12 +8,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
-"Plug 'ctrlpvim/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
+Plug 'janko-m/vim-test'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -83,6 +83,9 @@ nmap ga <Plug>(EasyAlign)
 
 " vim-pencil
 let g:pencil#wrapModeDefault = 'soft'
+
+" vim-test
+let test#strategy = "vimterminal"
 
 " RLS
 if executable('rls')
@@ -169,6 +172,9 @@ nnoremap <silent> <c-Up>   :<C-u>move-2<CR>==
 nnoremap <silent> <c-Down> :<C-u>move+<CR>==
 xnoremap <silent> <c-Up>   :move-2<CR>gv=gv
 xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
+
+" vim-test bindings
+nnoremap <silent> <Leader>t :TestFile<CR>
 
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
