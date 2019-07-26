@@ -17,6 +17,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -114,14 +115,24 @@ augroup fzf
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
+" Use rg for ctrl-p
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+" Gutentags config
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+                            \ '*.phar', '*.ini', '*.rst', '*.md']
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autoclose = 1
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-let g:gruvbox_invert_selection = 0
-set background=dark
-colorscheme gruvbox
+"let g:gruvbox_invert_selection = 0
+"set background=dark
+colorscheme Apprentice
 
 " termguicolors working under tmux requires this
 let &t_8f = "[38;2;%lu;%lu;%lum"
