@@ -9,11 +9,14 @@ Plug 'tpope/vim-sensible'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'janko-m/vim-test'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-fugitive'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -25,6 +28,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'mxw/vim-jsx'
 Plug 'cespare/vim-toml'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'OrangeT/vim-csharp'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
@@ -86,6 +90,10 @@ let g:pencil#wrapModeDefault = 'soft'
 
 " vim-test
 let test#strategy = "vimterminal"
+
+" This is to force vim-test to use `bundle exec rspec`
+" Otherwise it uses something called binstubs..?
+let test#ruby#use_binstubs = 0
 
 " RLS
 if executable('rls')
@@ -184,6 +192,13 @@ augroup rubygroup
     autocmd!
     autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
+
+" Set indentation for WS JS files
+augroup jsgroup
+    autocmd!
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
+
 
 augroup bufferswitch
     autocmd!
