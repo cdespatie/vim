@@ -17,7 +17,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -66,6 +65,9 @@ set lazyredraw
 set noshowmode
 
 set clipboard=unnamed
+
+" Disable folding for {/}
+set foldopen-=block
 
 """"""""""""""""""""""""""""""""""""""""""
 " PLUGIN SETTINGS
@@ -122,10 +124,6 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
                             \ '*.phar', '*.ini', '*.rst', '*.md']
-
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_autoclose = 1
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
@@ -194,6 +192,9 @@ xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
 
 " vim-test bindings
 nnoremap <silent> <Leader>t :TestFile<CR>
+
+" Folding
+nnoremap <leader>; za
 
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
