@@ -9,7 +9,6 @@ Plug 'tpope/vim-sensible'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
-Plug 'ludovicchabant/vim-gutentags'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
@@ -17,6 +16,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
+Plug 'benmills/vimux'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -33,6 +33,9 @@ Plug 'OrangeT/vim-csharp'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
+
+" COC
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Colorschemes
 Plug 'romainl/Apprentice'
@@ -52,6 +55,7 @@ set shiftwidth  =4
 set expandtab
 set breakindent
 set noswapfile
+set nohlsearch
 
 set number
 
@@ -68,6 +72,110 @@ set clipboard=unnamed
 
 " Disable folding for {/}
 set foldopen-=block
+
+""""""""""""""""""""""""""""""""""""""""""
+" COC SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 """"""""""""""""""""""""""""""""""""""""""
 " PLUGIN SETTINGS
@@ -89,10 +197,16 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " vim-pencil
-let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#wrapModeDefault = "soft"
 
 " vim-test
-let test#strategy = "vimterminal"
+let test#strategy = "vimux"
+let g:VimuxHeight = "30"
+
+" Bind for getting out of weird insert mode
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
 
 " This is to force vim-test to use `bundle exec rspec`
 " Otherwise it uses something called binstubs..?
@@ -117,13 +231,10 @@ augroup fzf
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
+nnoremap <c-\> :CocCommand eslint.executeAutofix<cr>
+
 " Use rg for ctrl-p
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-
-" Gutentags config
-let g:gutentags_cache_dir = '~/.vim/gutentags'
-let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
-                            \ '*.phar', '*.ini', '*.rst', '*.md']
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
@@ -234,14 +345,17 @@ augroup END
 " MULTIPURPOSE TAB KEY
 " Taken from Gary Bernhardt
 """"""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <c-n>
+"
+" DISABLED FOR COC.VIM SUPPORT
+"
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<tab>"
+"     else
+"         return "\<c-p>"
+"     endif
+" endfunction
+" inoremap <expr> <tab> InsertTabWrapper()
+" inoremap <s-tab> <c-n>
 
