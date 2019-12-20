@@ -17,6 +17,7 @@ Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
+Plug 'jtdowney/vimux-cargo'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -315,6 +316,12 @@ augroup rubygroup
     autocmd!
     autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
+
+augroup rust
+    autocmd!
+    autocmd FileType rust map <Leader>r :wa<CR> :CargoRun<CR>
+augroup END
+
 
 " Set indentation for WS JS files
 augroup jsgroup
