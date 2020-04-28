@@ -336,6 +336,12 @@ augroup rubygroup
     autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
 
+augroup rust
+    autocmd!
+    autocmd FileType rust map <Leader>r :wa<CR> :CargoRun<CR>
+augroup END
+
+
 " Set indentation for WS JS files
 augroup jsgroup
     autocmd!
