@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'vim-airline/vim-airline'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 " Programming plugins
 Plug 'tpope/vim-commentary'
@@ -17,6 +18,7 @@ Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
+"Plug 'airblade/vim-gitgutter'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -40,6 +42,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Colorschemes
 Plug 'romainl/Apprentice'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -223,7 +226,6 @@ if executable('rls')
 endif
 
 " FZF
-nnoremap <c-p> :FZF<cr>
 augroup fzf
   autocmd!
   autocmd! FileType fzf
@@ -231,16 +233,23 @@ augroup fzf
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-o> :Rg<cr>
 nnoremap <c-\> :CocCommand eslint.executeAutofix<cr>
 
 " Use rg for ctrl-p
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options' : '--delimiter : --nth 4..'}, 'up:60%'), <bang>0)
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
 "let g:gruvbox_invert_selection = 0
 "set background=dark
+" colorscheme Apprentice
 colorscheme Apprentice
 
 " termguicolors working under tmux requires this
@@ -276,7 +285,7 @@ set t_EI=[2\ q
 """"""""""""""""""""""""""""""""""""""""""
 " KEYMAPS
 """"""""""""""""""""""""""""""""""""""""""
-let mapleader = "\<Space>"
+let mapleader = " "
 
 inoremap jk <esc>
 
@@ -306,6 +315,17 @@ nnoremap <silent> <Leader>t :TestFile<CR>
 
 " Folding
 nnoremap <leader>; za
+
+" Split Resizing
+"nnoremap <silent> <s-i> :res +3<CR>
+"nnoremap <silent> <s-k> :res -3<CR>
+nnoremap <silent> <s-j> :vertical res +3<CR>
+nnoremap <silent> <s-l> :vertical res -3<CR>
+
+" Remaps capital W and capital Q because my fingers are fat
+command W w
+command Q q
+
 
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
