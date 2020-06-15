@@ -18,7 +18,6 @@ Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
-"Plug 'airblade/vim-gitgutter'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -247,9 +246,6 @@ command! -bang -nargs=* Rg
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-"let g:gruvbox_invert_selection = 0
-"set background=dark
-" colorscheme Apprentice
 colorscheme Apprentice
 
 " termguicolors working under tmux requires this
@@ -317,15 +313,12 @@ nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <leader>; za
 
 " Split Resizing
-"nnoremap <silent> <s-i> :res +3<CR>
-"nnoremap <silent> <s-k> :res -3<CR>
 nnoremap <silent> <s-j> :vertical res +3<CR>
 nnoremap <silent> <s-l> :vertical res -3<CR>
 
 " Remaps capital W and capital Q because my fingers are fat
 command W w
 command Q q
-
 
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
@@ -366,22 +359,4 @@ augroup disablebells
     set noerrorbells visualbell t_vb=
     autocmd GUIEnter * set visualbell t_vb=
 augroup END
-
-""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" Taken from Gary Bernhardt
-""""""""""""""""""""""""""""""""""""""""""
-"
-" DISABLED FOR COC.VIM SUPPORT
-"
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-" inoremap <expr> <tab> InsertTabWrapper()
-" inoremap <s-tab> <c-n>
 
