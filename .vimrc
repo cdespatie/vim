@@ -333,6 +333,12 @@ augroup rust
     autocmd!
     autocmd FileType rust map <Leader>r :wa<CR> :CargoRun<CR>
 augroup END
+"
+" Set indentation correctly for json files
+augroup jsongroup
+    autocmd!
+    autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
 
 
 " Set indentation for WS JS files
