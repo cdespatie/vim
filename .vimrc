@@ -317,8 +317,8 @@ nnoremap <silent> <s-j> :vertical res +3<CR>
 nnoremap <silent> <s-l> :vertical res -3<CR>
 
 " Remaps capital W and capital Q because my fingers are fat
-command W w
-command Q q
+command! W w
+command! Q q
 
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
