@@ -246,7 +246,7 @@ command! -bang -nargs=* Rg
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme Apprentice
+colorscheme apprentice
 
 " termguicolors working under tmux requires this
 let &t_8f = "[38;2;%lu;%lu;%lum"
