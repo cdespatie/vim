@@ -46,6 +46,29 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""
+" THEME SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+colorscheme apprentice
+
+" termguicolors working under tmux requires this
+let &t_8f = "[38;2;%lu;%lu;%lum"
+let &t_8b = "[48;2;%lu;%lu;%lum"
+set termguicolors
+
+" gVim specific settings
+if has("gui_running")
+    set guioptions-=T " Remove toolbar in gVim
+    set guioptions-=L " Remove left scrollbar in gVim ('r' is right)
+endif
+
+" Windows has different font syntax
+if has("win32") || has("win64")
+    set guifont=Hack:h9:cANSI
+    set rop=type:directx,geom:1,taamode:1
+    set enc=utf-8
+endif
+
+""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITOR SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
@@ -76,9 +99,172 @@ set clipboard=unnamed
 set foldopen-=block
 
 """"""""""""""""""""""""""""""""""""""""""
+" PLUGIN SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+" Pandoc
+let g:pandoc#modules#disabled = ["folding"]
+
+" Airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_detect_whitespace = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+" Easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" vim-pencil
+let g:pencil#wrapModeDefault = "soft"
+
+" vim-test
+let test#strategy = "vimux"
+let g:VimuxHeight = "30"
+
+" Bind for getting out of weird insert mode
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+
+" This is to force vim-test to use `bundle exec rspec`
+" Otherwise it uses something called binstubs..?
+let test#ruby#use_binstubs = 0
+
+" RLS
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+    let g:ale_linters = {'rust': ['rls']}
+endif
+
+" FZF
+augroup fzf
+  autocmd!
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-o> :Rg<cr>
+nnoremap <c-\> :CocCommand eslint.executeAutofix<cr>
+
+" Use rg for ctrl-p
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options' : '--delimiter : --nth 4..'}, 'up:60%'), <bang>0)
+
+""""""""""""""""""""""""""""""""""""""""""
+" KEYMAPS
+""""""""""""""""""""""""""""""""""""""""""
+let mapleader = " "
+
+inoremap jk <esc>
+
+nnoremap <leader><leader> .
+
+" Create splits with leader
+nnoremap <leader>s <C-W>v
+nnoremap <leader>h <C-W>s
+
+" Rotate between splits
+nnoremap <leader>w <c-W>w
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-W>j
+nnoremap <c-k> <c-W>k
+nnoremap <c-h> <c-W>h
+nnoremap <c-l> <c-W>l
+
+" Move lines of code around with ctrl-arrows
+nnoremap <silent> <c-Up>   :<C-u>move-2<CR>==
+nnoremap <silent> <c-Down> :<C-u>move+<CR>==
+xnoremap <silent> <c-Up>   :move-2<CR>gv=gv
+xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
+
+" vim-test bindings
+nnoremap <silent> <Leader>t :TestFile<CR>
+
+" Folding
+nnoremap <leader>; za
+
+" Split Resizing
+nnoremap <silent> <s-j> :vertical res +3<CR>
+nnoremap <silent> <s-l> :vertical res -3<CR>
+
+" Remaps capital W and capital Q because my fingers are fat
+command! W w
+command! Q q
+
+""""""""""""""""""""""""""""""""""""""""""
+" AUTOCMDS
+""""""""""""""""""""""""""""""""""""""""""
+" Set indentation correctly for ruby files
+augroup rubygroup
+    autocmd!
+    autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
+
+augroup rust
+    autocmd!
+    autocmd FileType rust map <Leader>r :wa<CR> :CargoRun<CR>
+augroup END
+"
+" Set indentation correctly for json files
+augroup jsongroup
+    autocmd!
+    autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
+
+
+" Set indentation for WS JS files
+augroup jsgroup
+    autocmd!
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
+
+
+augroup bufferswitch
+    autocmd!
+    if v:version >= 700
+      au BufLeave * let b:winview = winsaveview()
+      au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+    endif
+augroup END
+
+augroup pencil
+  autocmd!
+  autocmd FileType text         call pencil#init()
+augroup END
+
+augroup disablebells
+    set noerrorbells visualbell t_vb=
+    autocmd GUIEnter * set visualbell t_vb=
+augroup END
+
+""""""""""""""""""""""""""""""""""""""""""
+" OS-SPECIFIC SETTINGS
+""""""""""""""""""""""""""""""""""""""""""
+" Enable DirectX font rendering on Windows
+if has("directx") && $VIM_USE_DIRECTX != '0'
+  set renderoptions=type:directx,geom:1,taamode:1
+endif
+
+set t_SI=[6\ q
+set t_SR=[4\ q
+set t_EI=[2\ q
+
+""""""""""""""""""""""""""""""""""""""""""
 " COC SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-
 set hidden
 set nobackup
 set nowritebackup
@@ -178,191 +364,4 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN SETTINGS
-""""""""""""""""""""""""""""""""""""""""""
-" Pandoc
-let g:pandoc#modules#disabled = ["folding"]
-
-" Airline
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_detect_whitespace = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-
-" Easy align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" vim-pencil
-let g:pencil#wrapModeDefault = "soft"
-
-" vim-test
-let test#strategy = "vimux"
-let g:VimuxHeight = "30"
-
-" Bind for getting out of weird insert mode
-if has('nvim')
-  tmap <C-o> <C-\><C-n>
-endif
-
-" This is to force vim-test to use `bundle exec rspec`
-" Otherwise it uses something called binstubs..?
-let test#ruby#use_binstubs = 0
-
-" RLS
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-    let g:ale_linters = {'rust': ['rls']}
-endif
-
-" FZF
-augroup fzf
-  autocmd!
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-augroup END
-
-nnoremap <c-p> :FZF<cr>
-nnoremap <c-o> :Rg<cr>
-nnoremap <c-\> :CocCommand eslint.executeAutofix<cr>
-
-" Use rg for ctrl-p
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'options' : '--delimiter : --nth 4..'}, 'up:60%'), <bang>0)
-
-""""""""""""""""""""""""""""""""""""""""""
-" THEME SETTINGS
-""""""""""""""""""""""""""""""""""""""""""
-colorscheme apprentice
-
-" termguicolors working under tmux requires this
-let &t_8f = "[38;2;%lu;%lu;%lum"
-let &t_8b = "[48;2;%lu;%lu;%lum"
-set termguicolors
-
-" gVim specific settings
-if has("gui_running")
-    set guioptions-=T " Remove toolbar in gVim
-    set guioptions-=L " Remove left scrollbar in gVim ('r' is right)
-endif
-
-" Windows has different font syntax
-if has("win32") || has("win64")
-    set guifont=Hack:h9:cANSI
-    set rop=type:directx,geom:1,taamode:1
-    set enc=utf-8
-endif
-
-""""""""""""""""""""""""""""""""""""""""""
-" OS-SPECIFIC SETTINGS
-""""""""""""""""""""""""""""""""""""""""""
-" Enable DirectX font rendering on Windows
-if has("directx") && $VIM_USE_DIRECTX != '0'
-  set renderoptions=type:directx,geom:1,taamode:1
-endif
-
-set t_SI=[6\ q
-set t_SR=[4\ q
-set t_EI=[2\ q
-
-""""""""""""""""""""""""""""""""""""""""""
-" KEYMAPS
-""""""""""""""""""""""""""""""""""""""""""
-let mapleader = " "
-
-inoremap jk <esc>
-
-nnoremap <leader><leader> .
-
-" Create splits with leader
-nnoremap <leader>s <C-W>v
-nnoremap <leader>h <C-W>s
-
-" Rotate between splits
-nnoremap <leader>w <c-W>w
-
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-W>j
-nnoremap <c-k> <c-W>k
-nnoremap <c-h> <c-W>h
-nnoremap <c-l> <c-W>l
-
-" Move lines of code around with ctrl-arrows
-nnoremap <silent> <c-Up>   :<C-u>move-2<CR>==
-nnoremap <silent> <c-Down> :<C-u>move+<CR>==
-xnoremap <silent> <c-Up>   :move-2<CR>gv=gv
-xnoremap <silent> <c-Down> :move'>+<CR>gv=gv
-
-" vim-test bindings
-nnoremap <silent> <Leader>t :TestFile<CR>
-
-" Folding
-nnoremap <leader>; za
-
-" Split Resizing
-nnoremap <silent> <s-j> :vertical res +3<CR>
-nnoremap <silent> <s-l> :vertical res -3<CR>
-
-" Remaps capital W and capital Q because my fingers are fat
-command! W w
-command! Q q
-
-""""""""""""""""""""""""""""""""""""""""""
-" AUTOCMDS
-""""""""""""""""""""""""""""""""""""""""""
-" Set indentation correctly for ruby files
-augroup rubygroup
-    autocmd!
-    autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
-augroup END
-
-augroup rust
-    autocmd!
-    autocmd FileType rust map <Leader>r :wa<CR> :CargoRun<CR>
-augroup END
-"
-" Set indentation correctly for json files
-augroup jsongroup
-    autocmd!
-    autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
-augroup END
-
-
-" Set indentation for WS JS files
-augroup jsgroup
-    autocmd!
-    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
-augroup END
-
-
-augroup bufferswitch
-    autocmd!
-    if v:version >= 700
-      au BufLeave * let b:winview = winsaveview()
-      au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
-    endif
-augroup END
-
-augroup pencil
-  autocmd!
-  autocmd FileType text         call pencil#init()
-augroup END
-
-augroup disablebells
-    set noerrorbells visualbell t_vb=
-    autocmd GUIEnter * set visualbell t_vb=
-augroup END
 
