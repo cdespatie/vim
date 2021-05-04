@@ -15,13 +15,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'janko-m/vim-test'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
-Plug 'junegunn/goyo.vim'
 
 " Language-specific plugins
 Plug 'mxw/vim-jsx'
@@ -38,8 +36,6 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Colorschemes
 Plug 'romainl/Apprentice'
-Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
