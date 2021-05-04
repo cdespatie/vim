@@ -21,8 +21,6 @@ Plug 'benmills/vimux'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'junegunn/goyo.vim'
 
 " Language-specific plugins
@@ -54,19 +52,6 @@ colorscheme apprentice
 let &t_8f = "[38;2;%lu;%lu;%lum"
 let &t_8b = "[48;2;%lu;%lu;%lum"
 set termguicolors
-
-" gVim specific settings
-if has("gui_running")
-    set guioptions-=T " Remove toolbar in gVim
-    set guioptions-=L " Remove left scrollbar in gVim ('r' is right)
-endif
-
-" Windows has different font syntax
-if has("win32") || has("win64")
-    set guifont=Hack:h9:cANSI
-    set rop=type:directx,geom:1,taamode:1
-    set enc=utf-8
-endif
 
 """"""""""""""""""""""""""""""""""""""""""
 " BASIC EDITOR SETTINGS
@@ -101,9 +86,6 @@ set foldopen-=block
 """"""""""""""""""""""""""""""""""""""""""
 " PLUGIN SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-" Pandoc
-let g:pandoc#modules#disabled = ["folding"]
-
 " Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -253,11 +235,6 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""
 " OS-SPECIFIC SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-" Enable DirectX font rendering on Windows
-if has("directx") && $VIM_USE_DIRECTX != '0'
-  set renderoptions=type:directx,geom:1,taamode:1
-endif
-
 set t_SI=[6\ q
 set t_SR=[4\ q
 set t_EI=[2\ q
