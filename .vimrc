@@ -36,17 +36,14 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Colorschemes
 Plug 'romainl/Apprentice'
-Plug 'sjl/badwolf'
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme badwolf
-
-" Badwolf colour settings
-let g:badwolf_darkgutter = 1
+colorscheme jellybeans
 
 " termguicolors working under tmux requires this
 let &t_8f = "[38;2;%lu;%lu;%lum"
@@ -68,6 +65,9 @@ set noswapfile
 set nohlsearch
 
 set number
+
+" Hides gutter (signs) column
+set scl=auto
 
 set ignorecase smartcase
 set incsearch
@@ -252,7 +252,7 @@ set nowritebackup
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
-set signcolumn=yes
+" set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
