@@ -36,13 +36,14 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Colorschemes
 Plug 'romainl/Apprentice'
+Plug 'sickill/vim-monokai'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme apprentice
+colorscheme monokai
 
 " termguicolors working under tmux requires this
 let &t_8f = "[38;2;%lu;%lu;%lum"
@@ -82,6 +83,10 @@ set foldopen-=block
 """"""""""""""""""""""""""""""""""""""""""
 " PLUGIN SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
+" Neovim + python + pyenv settings
+let g:python_host_prog = '/Users/cdespatie/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/cdespatie/.pyenv/versions/neovim3/bin/python'
+
 " Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
