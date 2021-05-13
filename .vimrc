@@ -36,14 +36,17 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Colorschemes
 Plug 'romainl/Apprentice'
-Plug 'sickill/vim-monokai'
+Plug 'sjl/badwolf'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme monokai
+colorscheme badwolf
+
+" Badwolf colour settings
+let g:badwolf_darkgutter = 1
 
 " termguicolors working under tmux requires this
 let &t_8f = "[38;2;%lu;%lu;%lum"
