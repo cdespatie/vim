@@ -43,7 +43,7 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""
 " THEME SETTINGS
 """"""""""""""""""""""""""""""""""""""""""
-colorscheme jellybeans
+colorscheme apprentice
 
 " termguicolors working under tmux requires this
 let &t_8f = "[38;2;%lu;%lu;%lum"
@@ -67,7 +67,11 @@ set nohlsearch
 set number
 
 " Hides gutter (signs) column
-set scl=auto
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=auto
+endif
 
 set ignorecase smartcase
 set incsearch
