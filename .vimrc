@@ -34,6 +34,11 @@ Plug 'hail2u/vim-css3-syntax'
 " COC
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+" PlantUML support
+Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+
 " Colorschemes
 Plug 'romainl/Apprentice'
 Plug 'nanotech/jellybeans.vim'
