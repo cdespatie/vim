@@ -199,6 +199,9 @@ nnoremap <silent> <s-l> :vertical res -3<CR>
 command! W w
 command! Q q
 
+" Run python files in split
+" nnoremap <Leader>r :call VimuxRunCommand("clear; python3 " . bufname("%"))<CR>
+
 """"""""""""""""""""""""""""""""""""""""""
 " AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""
@@ -212,6 +215,12 @@ augroup rust
     autocmd!
     autocmd FileType rust map <Leader>r :wa<CR> :CargoRun<CR>
 augroup END
+
+augroup pythongroup
+    autocmd!
+    autocmd FileType python nnoremap <Leader>r :call VimuxRunCommand("clear; python3 " . bufname("%"))<CR>
+augroup END
+
 "
 " Set indentation correctly for json files
 augroup jsongroup
@@ -310,7 +319,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+" nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
