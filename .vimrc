@@ -9,6 +9,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 Plug 'benmills/vimux'
 Plug 'janko-m/vim-test'
+Plug 'tpope/vim-fugitive'
 
 Plug 'sainnhe/everforest'
 call plug#end()
