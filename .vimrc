@@ -22,7 +22,7 @@ filetype plugin indent on
 set tabstop     =4
 set softtabstop =4
 set shiftwidth  =4
-set clipboard   =unnamed
+set clipboard   =unnamedplus
 set expandtab
 set breakindent
 set noswapfile
