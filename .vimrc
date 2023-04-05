@@ -11,6 +11,20 @@ Plug 'benmills/vimux'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-fugitive'
 
+" LSP
+Plug 'neovim/nvim-lspconfig'                           " Required
+Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} " Optional
+Plug 'williamboman/mason-lspconfig.nvim'               " Optional
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'L3MON4D3/LuaSnip'
+
+" LSP config
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
+
 Plug 'sainnhe/everforest'
 call plug#end()
 
@@ -97,3 +111,25 @@ augroup jsongroup
     autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
 
+lua <<EOF
+local cmp = require('cmp')
+local lsp = require('lsp-zero').preset({})
+
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({buffer = bufnr})
+end)
+
+cmp.setup({
+    sources = {
+        { name = 'buffer' },
+      },
+    mapping = cmp.mapping.preset.insert({
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    }),
+})
+
+-- " (Optional) Configure lua language server for neovim
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+lsp.setup()
+EOF
