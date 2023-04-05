@@ -87,7 +87,7 @@ nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-o> <cmd>Telescope live_grep<cr>
 
 let test#strategy = "vimux"
-let g:VimuxHeight = "30"
+let g:VimuxHeight = "20"
 
 " Autocmds
 " --------
