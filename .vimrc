@@ -10,6 +10,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'benmills/vimux'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'                           " Required
@@ -27,6 +28,11 @@ Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
 Plug 'sainnhe/everforest'
 call plug#end()
+
+" Startup speed hax
+if has('linux')
+    let g:python3_host_prog='/usr/bin/python3'
+endif
 
 " Settings
 " --------
