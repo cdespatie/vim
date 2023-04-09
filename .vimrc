@@ -118,24 +118,24 @@ augroup jsongroup
 augroup END
 
 lua <<EOF
-local cmp = require('cmp')
-local lsp = require('lsp-zero').preset({})
+    local cmp = require('cmp')
+    local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
-end)
+    lsp.on_attach(function(client, bufnr)
+      lsp.default_keymaps({buffer = bufnr})
+    end)
 
-cmp.setup({
-    sources = {
-        { name = 'buffer' },
-      },
-    mapping = cmp.mapping.preset.insert({
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-    }),
-})
+    cmp.setup({
+        sources = {
+            { name = 'buffer' },
+          },
+        mapping = cmp.mapping.preset.insert({
+          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        }),
+    })
 
--- " (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+    -- " (Optional) Configure lua language server for neovim
+    require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
-lsp.setup()
+    lsp.setup()
 EOF
