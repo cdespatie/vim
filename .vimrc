@@ -6,12 +6,18 @@ Plug 'elihunter173/dirbuf.nvim', {'branch': 'main'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Manage tmux splits
 Plug 'benmills/vimux'
+
+" Testing
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-fugitive'
+
+" Better comments
 Plug 'tpope/vim-commentary'
+
+" Syntax highlighting
 Plug 'hashivim/vim-terraform'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " AI
@@ -51,8 +57,6 @@ if has('termguicolors')
 endif
 
 set background=dark
-let g:everforest_background = 'hard'
-let g:everforest_better_performance = 1
 
 colorscheme onedark
 
@@ -73,8 +77,8 @@ nnoremap <leader>h <C-W>s
 nnoremap <leader>w <c-W>w
 nnoremap <leader>q <c-W>W
 
-nnoremap <silent> <s-l> :vertical res +3<CR>
-nnoremap <silent> <s-j> :vertical res -3<CR>
+nnoremap <silent> <s-j> :vertical res +3<CR>
+nnoremap <silent> <s-l> :vertical res -3<CR>
 
 " Fat finger saving and quitting
 command! W w
